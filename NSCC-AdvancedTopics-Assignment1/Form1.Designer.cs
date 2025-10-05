@@ -36,12 +36,15 @@
             this.rtbHistory = new System.Windows.Forms.RichTextBox();
             this.tbMessage = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.btnUsername = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblIP
             // 
             this.lblIP.AutoSize = true;
-            this.lblIP.Location = new System.Drawing.Point(12, 12);
+            this.lblIP.Location = new System.Drawing.Point(9, 61);
             this.lblIP.Name = "lblIP";
             this.lblIP.Size = new System.Drawing.Size(17, 13);
             this.lblIP.TabIndex = 0;
@@ -50,7 +53,7 @@
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(233, 12);
+            this.lblPort.Location = new System.Drawing.Point(230, 61);
             this.lblPort.Name = "lblPort";
             this.lblPort.Size = new System.Drawing.Size(37, 13);
             this.lblPort.TabIndex = 1;
@@ -58,21 +61,21 @@
             // 
             // tbIP
             // 
-            this.tbIP.Location = new System.Drawing.Point(35, 9);
+            this.tbIP.Location = new System.Drawing.Point(32, 58);
             this.tbIP.Name = "tbIP";
             this.tbIP.Size = new System.Drawing.Size(176, 20);
             this.tbIP.TabIndex = 2;
             // 
             // tbPort
             // 
-            this.tbPort.Location = new System.Drawing.Point(276, 9);
+            this.tbPort.Location = new System.Drawing.Point(273, 58);
             this.tbPort.Name = "tbPort";
             this.tbPort.Size = new System.Drawing.Size(61, 20);
             this.tbPort.TabIndex = 3;
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(352, 7);
+            this.btnConnect.Location = new System.Drawing.Point(349, 56);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 4;
@@ -82,7 +85,7 @@
             // 
             // rtbHistory
             // 
-            this.rtbHistory.Location = new System.Drawing.Point(15, 45);
+            this.rtbHistory.Location = new System.Drawing.Point(12, 94);
             this.rtbHistory.Name = "rtbHistory";
             this.rtbHistory.Size = new System.Drawing.Size(412, 333);
             this.rtbHistory.TabIndex = 5;
@@ -90,14 +93,14 @@
             // 
             // tbMessage
             // 
-            this.tbMessage.Location = new System.Drawing.Point(15, 395);
+            this.tbMessage.Location = new System.Drawing.Point(12, 443);
             this.tbMessage.Name = "tbMessage";
             this.tbMessage.Size = new System.Drawing.Size(322, 20);
             this.tbMessage.TabIndex = 6;
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(343, 395);
+            this.btnSend.Location = new System.Drawing.Point(340, 443);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(84, 23);
             this.btnSend.TabIndex = 7;
@@ -105,12 +108,42 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.button1_Click);
             // 
+            // tbUsername
+            // 
+            this.tbUsername.Location = new System.Drawing.Point(91, 15);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(229, 20);
+            this.tbUsername.TabIndex = 8;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(14, 18);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(71, 13);
+            this.lblUsername.TabIndex = 9;
+            this.lblUsername.Text = "USERNAME:";
+            this.lblUsername.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // btnUsername
+            // 
+            this.btnUsername.Location = new System.Drawing.Point(326, 13);
+            this.btnUsername.Name = "btnUsername";
+            this.btnUsername.Size = new System.Drawing.Size(101, 23);
+            this.btnUsername.TabIndex = 10;
+            this.btnUsername.Text = "SET USERNAME";
+            this.btnUsername.UseVisualStyleBackColor = true;
+            this.btnUsername.Click += new System.EventHandler(this.btnUsername_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(446, 438);
+            this.ClientSize = new System.Drawing.Size(446, 620);
+            this.Controls.Add(this.btnUsername);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.tbMessage);
             this.Controls.Add(this.rtbHistory);
@@ -120,7 +153,7 @@
             this.Controls.Add(this.lblPort);
             this.Controls.Add(this.lblIP);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Advanced Topics — Assignment 1";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,6 +169,9 @@
         private System.Windows.Forms.RichTextBox rtbHistory;
         private System.Windows.Forms.TextBox tbMessage;
         private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.TextBox tbUsername;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Button btnUsername;
     }
 }
 

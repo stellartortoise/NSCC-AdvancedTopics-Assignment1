@@ -22,9 +22,22 @@ namespace NSCC_AdvancedTopics_Assignment1
         Socket client  = null;
         string ip      = string.Empty;
         int port       = 1200;
+        string username = "Client";
 
         private void button1_Click(object sender, EventArgs e) // should be btnSend_Click
         {
+            string message = tbMessage.Text;
+            byte[] data = Encoding.ASCII.GetBytes(message);
+            if (client != null && client.Connected)
+            {
+                client.Send(data);
+                rtbHistory.AppendText(tbUsername.Text + ": " + message + Environment.NewLine);
+                tbMessage.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Not connected to server");
+            }
 
         }
 
@@ -105,6 +118,16 @@ namespace NSCC_AdvancedTopics_Assignment1
             }
 
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUsername_Click(object sender, EventArgs e)
+        {
+            username = tbUsername.Text;
         }
     }
 
