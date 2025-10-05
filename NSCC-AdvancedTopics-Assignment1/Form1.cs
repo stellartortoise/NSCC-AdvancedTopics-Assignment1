@@ -23,20 +23,34 @@ namespace NSCC_AdvancedTopics_Assignment1
         string ip      = string.Empty;
         int port       = 5000;
         string username = "Client";
+        private readonly object socketLock = new object(); // Co-Pilot suggestion for thread safety
 
         private void button1_Click(object sender, EventArgs e) // should be btnSend_Click
         {
             string message = tbUsername.Text + ": " + tbMessage.Text;
             byte[] data = Encoding.ASCII.GetBytes(message);
-            if (client != null && client.Connected)
+            lock (socketLock)
             {
-                client.Send(data);
-                rtbHistory.AppendText(message + Environment.NewLine);
-                tbMessage.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Not connected to server");
+                if (client != null && client.Connected)
+                {
+                    //client.Send(data);
+                    //rtbHistory.AppendText(message + Environment.NewLine);
+                    //tbMessage.Clear();
+                    client.BeginSend(data, 0, data.Length, SocketFlags.None, ar => //Co-Pilot suggestion
+                    {
+                        // Optionally handle send completion here
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            rtbHistory.AppendText(message + Environment.NewLine);
+                            tbMessage.Clear();
+                        });
+                    }, null);
+                }
+                else
+                {
+                    MessageBox.Show("Not connected to server");
+                }
+
             }
 
         }
@@ -168,16 +182,20 @@ namespace NSCC_AdvancedTopics_Assignment1
         private void mnDisconnect_Click(object sender, EventArgs e)
         {
             //disconnect
-            if (client != null && client.Connected)
+            lock (socketLock)
             {
-                client.Shutdown(SocketShutdown.Both);
-                client.Close();
-                MessageBox.Show("Disconnected");
+                if (client != null && client.Connected)
+                {
+                    client.Shutdown(SocketShutdown.Both);
+                    client.Close();
+                    MessageBox.Show("Disconnected");
+                }
+                else
+                {
+                    MessageBox.Show("Not connected to server");
+                }
             }
-            else
-            {
-                MessageBox.Show("Not connected to server");
-            }
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
