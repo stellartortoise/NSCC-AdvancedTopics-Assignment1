@@ -41,34 +41,34 @@ namespace NSCC_AdvancedTopics_Assignment1
 
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
-        {
-            ip = tbIP.Text;
-            int.TryParse(tbPort.Text, out port);
+        //private void btnConnect_Click(object sender, EventArgs e)
+        //{
+        //    ip = tbIP.Text;
+        //    int.TryParse(tbPort.Text, out port);
 
-            try
-            {
-                client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                client.Connect(new IPEndPoint(IPAddress.Parse(ip), port));// just (__ip, __port) in net core
-                if (client.Connected)
-                {
-                    MessageBox.Show("Connected");
+        //    try
+        //    {
+        //        client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        //        client.Connect(new IPEndPoint(IPAddress.Parse(ip), port));// just (__ip, __port) in net core
+        //        if (client.Connected)
+        //        {
+        //            MessageBox.Show("Connected");
 
-                    StateObject state = new StateObject();
-                    state.socket = client;
-                    client.BeginReceive(state.buffer, 0, StateObject.bufferSize, SocketFlags.None, new AsyncCallback(receiveMessage), state);
+        //            StateObject state = new StateObject();
+        //            state.socket = client;
+        //            client.BeginReceive(state.buffer, 0, StateObject.bufferSize, SocketFlags.None, new AsyncCallback(receiveMessage), state);
 
-                }
-                else
-                {
-                    MessageBox.Show("Not Connected");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Not Connected");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
         private void receiveMessage(IAsyncResult iasync)
         {
@@ -108,6 +108,10 @@ namespace NSCC_AdvancedTopics_Assignment1
                 handler.BeginReceive(state.buffer, 0, StateObject.bufferSize, 0, new AsyncCallback(receiveMessage), state);
 
             }
+            catch (ObjectDisposedException)
+            {
+                // Socket was closed, ignore this exception as it's expected on disconnect
+            }
             catch (SocketException _e)
             {
                 MessageBox.Show(_e.Message);
@@ -128,13 +132,14 @@ namespace NSCC_AdvancedTopics_Assignment1
         private void btnUsername_Click(object sender, EventArgs e)
         {
             username = tbUsername.Text;
+            MessageBox.Show($"Username set to: {username}");
         }
 
         // Connect
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ip = "127.0.0.1";
-            int.TryParse(tbPort.Text, out port);
+            //int.TryParse(tbPort.Text, out port);
 
             try
             {
@@ -173,6 +178,11 @@ namespace NSCC_AdvancedTopics_Assignment1
             {
                 MessageBox.Show("Not connected to server");
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 
