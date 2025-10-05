@@ -28,53 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblIP = new System.Windows.Forms.Label();
+            this.lblPort = new System.Windows.Forms.Label();
+            this.tbIP = new System.Windows.Forms.TextBox();
+            this.tbPort = new System.Windows.Forms.TextBox();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.rtbHistory = new System.Windows.Forms.RichTextBox();
+            this.tbMessage = new System.Windows.Forms.TextBox();
+            this.btnSend = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblIP
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.lblIP.AutoSize = true;
+            this.lblIP.Location = new System.Drawing.Point(12, 12);
+            this.lblIP.Name = "lblIP";
+            this.lblIP.Size = new System.Drawing.Size(17, 13);
+            this.lblIP.TabIndex = 0;
+            this.lblIP.Text = "IP";
             // 
-            // label2
+            // lblPort
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(235, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.lblPort.AutoSize = true;
+            this.lblPort.Location = new System.Drawing.Point(233, 12);
+            this.lblPort.Name = "lblPort";
+            this.lblPort.Size = new System.Drawing.Size(37, 13);
+            this.lblPort.TabIndex = 1;
+            this.lblPort.Text = "PORT";
             // 
-            // textBox1
+            // tbIP
             // 
-            this.textBox1.Location = new System.Drawing.Point(53, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 20);
-            this.textBox1.TabIndex = 2;
+            this.tbIP.Location = new System.Drawing.Point(35, 9);
+            this.tbIP.Name = "tbIP";
+            this.tbIP.Size = new System.Drawing.Size(176, 20);
+            this.tbIP.TabIndex = 2;
             // 
-            // textBox2
+            // tbPort
             // 
-            this.textBox2.Location = new System.Drawing.Point(276, 9);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(112, 20);
-            this.textBox2.TabIndex = 3;
+            this.tbPort.Location = new System.Drawing.Point(276, 9);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(61, 20);
+            this.tbPort.TabIndex = 3;
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(352, 7);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(75, 23);
+            this.btnConnect.TabIndex = 4;
+            this.btnConnect.Text = "CONNECT";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // rtbHistory
+            // 
+            this.rtbHistory.Location = new System.Drawing.Point(15, 45);
+            this.rtbHistory.Name = "rtbHistory";
+            this.rtbHistory.Size = new System.Drawing.Size(412, 333);
+            this.rtbHistory.TabIndex = 5;
+            this.rtbHistory.Text = "";
+            // 
+            // tbMessage
+            // 
+            this.tbMessage.Location = new System.Drawing.Point(15, 395);
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.Size = new System.Drawing.Size(322, 20);
+            this.tbMessage.TabIndex = 6;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(343, 395);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(84, 23);
+            this.btnSend.TabIndex = 7;
+            this.btnSend.Text = "SEND";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 591);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(446, 438);
+            this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.tbMessage);
+            this.Controls.Add(this.rtbHistory);
+            this.Controls.Add(this.btnConnect);
+            this.Controls.Add(this.tbPort);
+            this.Controls.Add(this.tbIP);
+            this.Controls.Add(this.lblPort);
+            this.Controls.Add(this.lblIP);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -84,10 +128,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lblIP;
+        private System.Windows.Forms.Label lblPort;
+        private System.Windows.Forms.TextBox tbIP;
+        private System.Windows.Forms.TextBox tbPort;
+        private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.RichTextBox rtbHistory;
+        private System.Windows.Forms.TextBox tbMessage;
+        private System.Windows.Forms.Button btnSend;
     }
 }
 
