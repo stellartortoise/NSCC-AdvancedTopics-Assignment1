@@ -39,6 +39,13 @@
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.btnUsername = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.networkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnConnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnDisconnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblIP
@@ -85,22 +92,22 @@
             // 
             // rtbHistory
             // 
-            this.rtbHistory.Location = new System.Drawing.Point(12, 94);
+            this.rtbHistory.Location = new System.Drawing.Point(17, 369);
             this.rtbHistory.Name = "rtbHistory";
-            this.rtbHistory.Size = new System.Drawing.Size(412, 333);
+            this.rtbHistory.Size = new System.Drawing.Size(412, 239);
             this.rtbHistory.TabIndex = 5;
             this.rtbHistory.Text = "";
             // 
             // tbMessage
             // 
-            this.tbMessage.Location = new System.Drawing.Point(12, 443);
+            this.tbMessage.Location = new System.Drawing.Point(17, 336);
             this.tbMessage.Name = "tbMessage";
             this.tbMessage.Size = new System.Drawing.Size(322, 20);
             this.tbMessage.TabIndex = 6;
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(340, 443);
+            this.btnSend.Location = new System.Drawing.Point(345, 333);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(84, 23);
             this.btnSend.TabIndex = 7;
@@ -110,7 +117,7 @@
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(91, 15);
+            this.tbUsername.Location = new System.Drawing.Point(91, 35);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(229, 20);
             this.tbUsername.TabIndex = 8;
@@ -118,7 +125,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(14, 18);
+            this.lblUsername.Location = new System.Drawing.Point(14, 42);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(71, 13);
             this.lblUsername.TabIndex = 9;
@@ -127,13 +134,61 @@
             // 
             // btnUsername
             // 
-            this.btnUsername.Location = new System.Drawing.Point(326, 13);
+            this.btnUsername.Location = new System.Drawing.Point(326, 27);
             this.btnUsername.Name = "btnUsername";
             this.btnUsername.Size = new System.Drawing.Size(101, 23);
             this.btnUsername.TabIndex = 10;
             this.btnUsername.Text = "SET USERNAME";
             this.btnUsername.UseVisualStyleBackColor = true;
             this.btnUsername.Click += new System.EventHandler(this.btnUsername_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gameToolStripMenuItem,
+            this.networkToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(446, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // gameToolStripMenuItem
+            // 
+            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.gameToolStripMenuItem.Text = "Game";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // networkToolStripMenuItem
+            // 
+            this.networkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnConnect,
+            this.mnDisconnect});
+            this.networkToolStripMenuItem.Name = "networkToolStripMenuItem";
+            this.networkToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.networkToolStripMenuItem.Text = "Network";
+            // 
+            // mnConnect
+            // 
+            this.mnConnect.Name = "mnConnect";
+            this.mnConnect.Size = new System.Drawing.Size(180, 22);
+            this.mnConnect.Text = "Connect";
+            this.mnConnect.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
+            // 
+            // mnDisconnect
+            // 
+            this.mnDisconnect.Name = "mnDisconnect";
+            this.mnDisconnect.Size = new System.Drawing.Size(180, 22);
+            this.mnDisconnect.Text = "Disconnect";
+            this.mnDisconnect.Click += new System.EventHandler(this.mnDisconnect_Click);
             // 
             // Form1
             // 
@@ -152,8 +207,12 @@
             this.Controls.Add(this.tbIP);
             this.Controls.Add(this.lblPort);
             this.Controls.Add(this.lblIP);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Advanced Topics — Assignment 1";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +231,12 @@
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Button btnUsername;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem networkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnConnect;
+        private System.Windows.Forms.ToolStripMenuItem mnDisconnect;
     }
 }
 

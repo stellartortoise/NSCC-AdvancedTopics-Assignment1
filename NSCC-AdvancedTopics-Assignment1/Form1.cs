@@ -21,17 +21,17 @@ namespace NSCC_AdvancedTopics_Assignment1
 
         Socket client  = null;
         string ip      = string.Empty;
-        int port       = 1200;
+        int port       = 5000;
         string username = "Client";
 
         private void button1_Click(object sender, EventArgs e) // should be btnSend_Click
         {
-            string message = tbMessage.Text;
+            string message = tbUsername.Text + ": " + tbMessage.Text;
             byte[] data = Encoding.ASCII.GetBytes(message);
             if (client != null && client.Connected)
             {
                 client.Send(data);
-                rtbHistory.AppendText(tbUsername.Text + ": " + message + Environment.NewLine);
+                rtbHistory.AppendText(message + Environment.NewLine);
                 tbMessage.Clear();
             }
             else
@@ -102,7 +102,7 @@ namespace NSCC_AdvancedTopics_Assignment1
 
                 rtbHistory.Invoke(new MethodInvoker(delegate()
                 {
-                    rtbHistory.AppendText("Server: " + data + Environment.NewLine);
+                    rtbHistory.AppendText(data + Environment.NewLine); //"Server: " + 
                 }));
 
                 handler.BeginReceive(state.buffer, 0, StateObject.bufferSize, 0, new AsyncCallback(receiveMessage), state);
@@ -128,6 +128,51 @@ namespace NSCC_AdvancedTopics_Assignment1
         private void btnUsername_Click(object sender, EventArgs e)
         {
             username = tbUsername.Text;
+        }
+
+        // Connect
+        private void connectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ip = "127.0.0.1";
+            int.TryParse(tbPort.Text, out port);
+
+            try
+            {
+                client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                client.Connect(new IPEndPoint(IPAddress.Parse(ip), port));// just (__ip, __port) in net core
+                if (client.Connected)
+                {
+                    MessageBox.Show("Connected");
+
+                    StateObject state = new StateObject();
+                    state.socket = client;
+                    client.BeginReceive(state.buffer, 0, StateObject.bufferSize, SocketFlags.None, new AsyncCallback(receiveMessage), state);
+
+                }
+                else
+                {
+                    MessageBox.Show("Not Connected");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void mnDisconnect_Click(object sender, EventArgs e)
+        {
+            //disconnect
+            if (client != null && client.Connected)
+            {
+                client.Shutdown(SocketShutdown.Both);
+                client.Close();
+                MessageBox.Show("Disconnected");
+            }
+            else
+            {
+                MessageBox.Show("Not connected to server");
+            }
         }
     }
 
