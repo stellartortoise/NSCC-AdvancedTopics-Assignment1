@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
-using ChatApplicationLibrary; //My Custom Library. I used --> https://youtu.be/5JNS0-dZy7E?si=xQtPI0G5WDqOHVnn as a reference
+using ChatApplicationLibraryV3; //My Custom Library. I used --> https://youtu.be/5JNS0-dZy7E?si=xQtPI0G5WDqOHVnn as a reference
 
 namespace NSCC_AdvancedTopics_Assignment1
 {
@@ -64,6 +64,7 @@ namespace NSCC_AdvancedTopics_Assignment1
         string username = "Client";
         private readonly object socketLock = new object(); // Co-Pilot suggestion for thread safety
         private ChatClient chatClient = new ChatClient(); // My Custom Library
+
         private void button1_Click(object sender, EventArgs e) // should be btnSend_Click
         {
             string message = tbUsername.Text + ": " + tbMessage.Text;
